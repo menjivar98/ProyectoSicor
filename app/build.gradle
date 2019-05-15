@@ -30,4 +30,11 @@ dependencies {
 
     //Material Design
     implementation 'com.google.android.material:material:1.1.0-alpha06'
+
+    //Circle Image View
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //Cropper
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
 }

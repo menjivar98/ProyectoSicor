@@ -64,6 +64,15 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        loginRegBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regist = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(regist);
+                finish();
+            }
+        });
     }
 
 
@@ -93,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 }else{
-                    showMessage(task.getException().toString());
+                    showMessage(task.getException().getMessage());
                     loginProgress.setVisibility(View.INVISIBLE);
                     loginBtn.setVisibility(View.VISIBLE);
                 }
@@ -104,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showMessage(String text) {
-        Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Error:" + text,Toast.LENGTH_SHORT).show();
 
     }
 

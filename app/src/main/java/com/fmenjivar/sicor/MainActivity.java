@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fmenjivar.sicor.Activities.LoginActivity;
+import com.fmenjivar.sicor.Activities.SetupActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -39,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null){
 
-            Intent loginIntent = new Intent(this, LoginActivity.class);
-            startActivity(loginIntent);
-            finish();
+            sendtoLogin();
         }
 
 
@@ -56,6 +55,33 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        
+        
+        switch (item.getItemId()){
+            case R.id.action_logout_btn: 
+                logOut();
+                return true;
+            case R.id.action_setting_btn:
+                Intent settingIntent = new Intent(MainActivity.this, SetupActivity.class);
+                startActivity(settingIntent);
+
+        }
+        
+        
+        return true;
+    }
+
+    private void logOut() {
+
+        mAuth.signOut();
+        sendtoLogin();
+
+    }
+
+    private void sendtoLogin() {
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
+        finish();
+
     }
 }

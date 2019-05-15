@@ -6,4 +6,7 @@
     <string name="action_search">Search</string>
     <string name="action_setting">Account Settings</string>
     <string name="action_logout">Logout</string>
+    <string name="btn_register_2">Already have an Account</string>
+    <string name="btn_register">Create new Account</string>
+    <string name="reg_confirm_password">Confirm Password</string>
 </resources>
