@@ -3,4 +3,7 @@
     <string name="Login_Email">Email</string>
     <string name="password_login">Password</string>
     <string name="btn_login">LOGIN TO ACCOUNT</string>
+    <string name="action_search">Search</string>
+    <string name="action_setting">Account Settings</string>
+    <string name="action_logout">Logout</string>
 </resources>
