@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "328021427613",
+    "firebase_url": "https://sicorapi-36562.firebaseio.com",
+    "project_id": "sicorapi-36562",
+    "storage_bucket": "sicorapi-36562.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328021427613:android:89a6f053829ddabe",
+        "android_client_info": {
+          "package_name": "com.fmenjivar.sicor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328021427613-vk8eq9jkt5jhuvfsdnb9ulh03dlpoo9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fmenjivar.sicor",
+            "certificate_hash": "9ddae654aa75d038c782a5ffc84075bbb0d4b64f"
+          }
+        },
+        {
+          "client_id": "328021427613-m4aro3nltlgeb79ggsflhu27bobmfreb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfBTqSM0tgvuHKK5SSb0hfn8d3ZX1qk0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328021427613-m4aro3nltlgeb79ggsflhu27bobmfreb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
