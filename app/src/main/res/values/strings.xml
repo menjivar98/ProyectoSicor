@@ -9,4 +9,5 @@
     <string name="btn_register_2">Already have an Account</string>
     <string name="btn_register">Create new Account</string>
     <string name="reg_confirm_password">Confirm Password</string>
+    <string name="text_of_btn_setup">SAVE ACCOUNT SETTINGS</string>
 </resources>

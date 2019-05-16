@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "328021427613-sg6ufmmdag6hdf7haigfindcpl5lgl28.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fmenjivar.sicor",
+            "certificate_hash": "310406967be2a3f303a9d50d3d794fff740f4e65"
+          }
+        },
+        {
           "client_id": "328021427613-vk8eq9jkt5jhuvfsdnb9ulh03dlpoo9e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
