@@ -18,12 +18,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.fmenjivar.sicor.MainActivity;
 import com.fmenjivar.sicor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -46,6 +49,9 @@ public class SetupActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
+    private String user_id;
+    private boolean isCHanged = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,38 @@ public class SetupActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
+        user_id = firebaseAuth.getCurrentUser().getUid();
+
+        firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+
+                    if(task.getResult().exists()){
+                        String name = task.getResult().getString("name");
+                        String image = task.getResult().getString("image");
+
+                        mainImageURI = Uri.parse(image);
+
+                        setupName.setText(name);
+
+                        RequestOptions placeholderRequest = new RequestOptions();
+                        placeholderRequest.placeholder(R.drawable.default_profile);
+
+                        Glide.with(SetupActivity.this).setDefaultRequestOptions(placeholderRequest).load(image).into(setupImage);
+
+
+                    }
+
+
+                }else{
+                    showMessageErro(task.getException().getMessage());
+                }
+            }
+        });
+
+
+
 
         setupImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,10 +121,15 @@ public class SetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String user_name = setupName.getText().toString();
+               final String user_name = setupName.getText().toString();
 
-                if(!user_name.isEmpty() && mainImageURI != null){
-                    setupUser(user_name);
+                if(isCHanged){
+
+                    if(!user_name.isEmpty() && mainImageURI != null){
+                        setupUser(user_name);
+                    }
+                }else{
+                    storeFirestone(null,user_name);
                 }
 
             }
@@ -124,6 +167,9 @@ public class SetupActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 mainImageURI = result.getUri();
                 setupImage.setImageURI(mainImageURI);
+
+                isCHanged = true;
+
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
@@ -132,7 +178,7 @@ public class SetupActivity extends AppCompatActivity {
 
     private void setupUser(final String userName) {
 
-        final String user_id = firebaseAuth.getCurrentUser().getUid();
+         user_id = firebaseAuth.getCurrentUser().getUid();
 
         final StorageReference image_path = storageReference.child("profile_images").child(user_id + " .jpg");
         image_path.putFile(mainImageURI).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -143,29 +189,7 @@ public class SetupActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
 
-                        Map<String, String> userMap = new HashMap<>();
-                        userMap.put("name",userName);
-                        userMap.put("image",uri.toString());
-
-                        firebaseFirestore.collection("Users").document(user_id).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-                               if (task.isSuccessful()){
-                                   showMessage("The user setting are updated");
-                                   Intent mainIntent = new Intent(SetupActivity.this, MainActivity.class);
-                                   startActivity(mainIntent);
-                                   finish();
-
-                               }else {
-                                   showMessageErro(task.getException().getMessage());
-                               }
-
-
-
-
-                            }
-                        });
+                        storeFirestone(uri,userName);
 
 
                     }
@@ -175,6 +199,45 @@ public class SetupActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void storeFirestone(Uri uri, String userName) {
+
+        Map<String, String> userMap = new HashMap<>();
+
+        if(uri != null){
+
+            userMap.put("name",userName);
+            userMap.put("image",uri.toString());
+        }else{
+
+                userMap.put("image",mainImageURI.toString());
+
+        }
+
+
+
+
+        firebaseFirestore.collection("Users").document(user_id).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+                    showMessage("The user setting are updated");
+                    Intent mainIntent = new Intent(SetupActivity.this, MainActivity.class);
+                    startActivity(mainIntent);
+                    finish();
+
+                }else {
+                    showMessageErro(task.getException().getMessage());
+                }
+
+
+
+
+            }
+        });
 
     }
 
