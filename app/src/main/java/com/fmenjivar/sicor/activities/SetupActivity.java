@@ -1,4 +1,4 @@
-package com.fmenjivar.sicor.Activities;
+package com.fmenjivar.sicor.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

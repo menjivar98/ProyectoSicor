@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-import com.fmenjivar.sicor.Activities.LoginActivity;
-import com.fmenjivar.sicor.Activities.SetupActivity;
+import com.fmenjivar.sicor.activities.LoginActivity;
+import com.fmenjivar.sicor.activities.SetupActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar mainToolbar;
     private  FirebaseAuth mAuth;
+    private FloatingActionButton addPostBtn;
 
 
     @Override
@@ -28,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         mAuth = FirebaseAuth.getInstance();
 
+        addPostBtn =  findViewById(R.id.add_post_btn);
+        addPostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }

@@ -18,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:id="@+id/add_post_btn"
         android:layout_margin="15dp"
         android:src="@drawable/ic_add_white_24dp"
         app:backgroundTint="@color/Secondary" />
