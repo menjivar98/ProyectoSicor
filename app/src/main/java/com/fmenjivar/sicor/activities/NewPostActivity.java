@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.Toolbar;
 import com.fmenjivar.sicor.MainActivity;
 import com.fmenjivar.sicor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.chip.Chip;
@@ -32,12 +34,21 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
+
+import id.zelory.compressor.Compressor;
+
 
 public class NewPostActivity extends AppCompatActivity {
 
     ImageView newPostImage;
+    static final int MAX_LENGTH = 100;
     EditText newPostDesc;
     Chip chipLow,chipMedium, chipHigh;
     Button newPostBtn;
@@ -52,6 +63,8 @@ public class NewPostActivity extends AppCompatActivity {
     private Uri postImageUri = null;
 
     private String current_user_id;
+
+    Bitmap compressedImageFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,49 +102,87 @@ public class NewPostActivity extends AppCompatActivity {
                 if(!desc.isEmpty() && postImageUri != null){
                     progressBar.setVisibility(View.VISIBLE);
 
-                    String randomName = FieldValue.serverTimestamp().toString();
+                    final String randomName = UUID.randomUUID().toString();
 
                     final StorageReference filePath = storageReference.child("post_image").child(randomName + ".jpg");
                     filePath.putFile(postImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                             if(task.isSuccessful()){
-                                filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                File actualImageFile= new File(postImageUri.getPath());
+
+                                try {
+                                    compressedImageFile = new Compressor(NewPostActivity.this)
+                                            .setMaxHeight(200)
+                                            .setMaxWidth(200)
+                                            .compressToBitmap(actualImageFile);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                compressedImageFile.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                                byte[] thumbData = baos.toByteArray();
+
+                                final UploadTask uploadTask = storageReference.child("post_image/thumbs")
+                                        .child(randomName + ".jpg").putBytes(thumbData);
+
+                                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
-                                    public void onSuccess(Uri uri) {
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                        Map<String,Object> postMap = new HashMap<>();
-                                        postMap.put("image_url",uri.toString());
-                                        postMap.put("description",desc);
-                                        postMap.put("user_id",current_user_id);
-                                        postMap.put("Danger",opc);
-                                        postMap.put("timeStamp",FieldValue.serverTimestamp());
-
-                                        firebaseFirestore.collection("Post").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                        /*************************************************************/
+                                        filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                             @Override
-                                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                                            public void onSuccess(Uri uri) {
 
-                                                if(task.isSuccessful()){
+                                                Map<String,Object> postMap = new HashMap<>();
+                                                postMap.put("image_url",uri.toString());
+                                                postMap.put("description",desc);
+                                                postMap.put("thumb",uploadTask.toString());
+                                                postMap.put("user_id",current_user_id);
+                                                postMap.put("Danger",opc);
+                                                postMap.put("timeStamp",FieldValue.serverTimestamp());
 
-                                                    showMessage("Post was added");
-                                                    Intent maintIntent = new Intent(NewPostActivity.this,MainActivity.class);
-                                                    startActivity(maintIntent);
-                                                    finish();
+                                                firebaseFirestore.collection("Post").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                                                        if(task.isSuccessful()){
+
+                                                            showMessage("Post was added");
+                                                            Intent maintIntent = new Intent(NewPostActivity.this,MainActivity.class);
+                                                            startActivity(maintIntent);
+                                                            finish();
 
 
-                                                }else {
+                                                        }else {
 
-                                                }
+                                                        }
 
-                                                progressBar.setVisibility(View.INVISIBLE);
+                                                        progressBar.setVisibility(View.INVISIBLE);
+                                                    }
+
+
+
+                                                });
+
                                             }
-
-
-
                                         });
+
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+
 
                                     }
                                 });
+
+
+
                             }
 
                         }
@@ -184,7 +235,19 @@ public class NewPostActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), text,Toast.LENGTH_SHORT).show();
     }
 
+    public static String random(){
+        Random generator = new Random();
+        StringBuilder randomStringBuilder = new StringBuilder();
+        int randomLength = generator.nextInt(MAX_LENGTH);
+        char tempChar;
+        for(int i = 0; i < randomLength; i++){
+            tempChar = (char) (generator.nextInt(96) +32);
+            randomStringBuilder.append(tempChar);
+        }
 
+        return randomStringBuilder.toString();
+
+    }
 
 
 }
