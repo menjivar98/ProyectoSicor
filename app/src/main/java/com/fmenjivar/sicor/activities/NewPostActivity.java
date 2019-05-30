@@ -48,7 +48,7 @@ import id.zelory.compressor.Compressor;
 public class NewPostActivity extends AppCompatActivity {
 
     ImageView newPostImage;
-    static final int MAX_LENGTH = 100;
+
     EditText newPostDesc;
     Chip chipLow,chipMedium, chipHigh;
     Button newPostBtn;
@@ -235,19 +235,7 @@ public class NewPostActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), text,Toast.LENGTH_SHORT).show();
     }
 
-    public static String random(){
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(MAX_LENGTH);
-        char tempChar;
-        for(int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) +32);
-            randomStringBuilder.append(tempChar);
-        }
 
-        return randomStringBuilder.toString();
-
-    }
 
 
 }

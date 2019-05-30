@@ -16,6 +16,7 @@ import com.fmenjivar.sicor.activities.NewPostActivity;
 import com.fmenjivar.sicor.activities.SetupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton addPostBtn;
 
+    BottomNavigationView mainbottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
