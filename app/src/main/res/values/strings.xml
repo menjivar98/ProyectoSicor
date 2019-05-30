@@ -10,4 +10,9 @@
     <string name="btn_register">Create new Account</string>
     <string name="reg_confirm_password">Confirm Password</string>
     <string name="text_of_btn_setup">SAVE ACCOUNT SETTINGS</string>
+    <string name="post_hint">Add Description</string>
+    <string name="TextView_post">Danger:</string>
+    <string name="chip_low">Low</string>
+    <string name="chip_Medium">Medium</string>
+    <string name="chip_high">High</string>
 </resources>
