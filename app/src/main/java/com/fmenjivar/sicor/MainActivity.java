@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         mAuth = FirebaseAuth.getInstance();
 
-        getSupportActionBar().setTitle("SICOR");
+
 
     }
 

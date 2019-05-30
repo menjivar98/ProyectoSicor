@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                     loginBtn.setVisibility(View.INVISIBLE);
 
                     sendToMain();
+                    finish();
 
 
                 }else{
