@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_action_home"
+        android:icon="@drawable/outline_home_white_36"
+        android:iconTint="@color/White"
+        android:title="@string/btn_bottom_navigation"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bottom_action_notificaion"
+        android:icon="@drawable/outline_notifications_white_36"
+        android:iconTint="@color/White"
+        android:title="@string/bottom_notification_texr"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bottom_action_account"
+        android:icon="@drawable/outline_person_white_36"
+        android:iconTint="@color/White"
+        android:title="@string/bottom_ac_text"
+        app:showAsAction="always" />
+</menu>

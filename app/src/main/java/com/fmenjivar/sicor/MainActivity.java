@@ -3,6 +3,8 @@ package com.fmenjivar.sicor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,9 @@ import android.widget.Toast;
 import com.fmenjivar.sicor.activities.LoginActivity;
 import com.fmenjivar.sicor.activities.NewPostActivity;
 import com.fmenjivar.sicor.activities.SetupActivity;
+import com.fmenjivar.sicor.fragment.AccountFragment;
+import com.fmenjivar.sicor.fragment.HomeFragment;
+import com.fmenjivar.sicor.fragment.NotificationFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView mainbottomNav;
 
+
+    HomeFragment homeFragment;
+    NotificationFragment notificationFragment;
+    AccountFragment accountFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +55,37 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        mainbottomNav = findViewById(R.id.mainBottomNav);
 
+
+        //Fragments
+        homeFragment = new HomeFragment();
+        notificationFragment = new NotificationFragment();
+        accountFragment = new AccountFragment();
+
+        mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+                switch (item.getItemId()){
+
+                    case R.id.bottom_action_home:
+                        replaceFragment(homeFragment);
+                        return true;
+                    case R.id.bottom_action_notificaion:
+                        replaceFragment(notificationFragment);
+                        return true;
+                    case R.id.bottom_action_account:
+                        replaceFragment(accountFragment);
+                        return true;
+
+                     default:
+                         return false;
+                }
+
+            }
+        });
 
         addPostBtn =  findViewById(R.id.add_post_btn);
         addPostBtn.setOnClickListener(new View.OnClickListener() {
@@ -142,4 +182,13 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Error:" + text,Toast.LENGTH_SHORT).show();
 
     }
+
+    private void replaceFragment(Fragment fragment){
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_cointer,fragment);
+        fragmentTransaction.commit();
+
+    }
+
 }
