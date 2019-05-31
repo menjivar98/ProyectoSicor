@@ -28,10 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_menu"
-        android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
-        app:itemTextColor="@color/White"
-        app:showAsAction="always"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_gravity="bottom">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <FrameLayout
         android:id="@+id/main_cointer"
