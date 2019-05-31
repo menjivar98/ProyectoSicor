@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class DangerPost {
 
-    private String user_id,image_url,description,Danger,image_thumb;
+    private String user_id,image_url,description,danger,image_thumb;
     private Timestamp timestamp;
 
     public DangerPost(){}
@@ -13,9 +13,9 @@ public class DangerPost {
         this.user_id = user_id;
         this.image_url = image_url;
         this.description = description;
-        Danger = danger;
+        this.danger = danger;
         this.image_thumb = image_thumb;
-        this.timestamp = timestamp;
+
     }
 
     public String getUser_id() {
@@ -43,11 +43,11 @@ public class DangerPost {
     }
 
     public String getDanger() {
-        return Danger;
+        return danger;
     }
 
     public void setDanger(String danger) {
-        Danger = danger;
+        danger = danger;
     }
 
     public String getImage_thumb() {
@@ -58,11 +58,5 @@ public class DangerPost {
         this.image_thumb = image_thumb;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 }
