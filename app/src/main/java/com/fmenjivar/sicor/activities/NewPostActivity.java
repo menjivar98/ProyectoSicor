@@ -139,10 +139,10 @@ public class NewPostActivity extends AppCompatActivity {
                                                 Map<String,Object> postMap = new HashMap<>();
                                                 postMap.put("image_url",uri.toString());
                                                 postMap.put("description",desc);
-                                                postMap.put("thumb",uploadTask.toString());
+                                                postMap.put("image_thumb",uploadTask.toString());
                                                 postMap.put("user_id",current_user_id);
-                                                postMap.put("Danger",opc);
-                                                postMap.put("timeStamp",FieldValue.serverTimestamp());
+                                                postMap.put("danger",opc);
+                                                postMap.put("timestamp",FieldValue.serverTimestamp());
 
                                                 firebaseFirestore.collection("Post").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                     @Override
