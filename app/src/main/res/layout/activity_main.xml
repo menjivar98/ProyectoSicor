@@ -35,7 +35,7 @@
         android:id="@+id/main_cointer"
         android:layout_width="match_parent"
         android:layout_height="549dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="45dp">
 
     </FrameLayout>
 
