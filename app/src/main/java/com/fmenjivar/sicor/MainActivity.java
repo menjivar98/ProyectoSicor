@@ -177,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
     private void sendtoLogin() {
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
-        finish();
 
     }
 

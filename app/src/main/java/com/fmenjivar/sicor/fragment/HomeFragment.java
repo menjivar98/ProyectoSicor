@@ -1,6 +1,7 @@
 package com.fmenjivar.sicor.fragment;
 
 
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,26 +99,33 @@ public class HomeFragment extends Fragment {
 
            Query firstQuery = firebaseFirestore.collection("Post").orderBy("timestamp",Query.Direction.DESCENDING).limit(3);
 
-           firstQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
+           firstQuery.addSnapshotListener(getActivity(),new EventListener<QuerySnapshot>() {
                @Override
                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-                   lastVisible = queryDocumentSnapshots.getDocuments()
-                           .get(queryDocumentSnapshots.size() -1);
+                   if (e!=null){
+                       Log.d(TAG,"Error: " + e.getMessage());
+                   }else{
+                       lastVisible = queryDocumentSnapshots.getDocuments()
+                               .get(queryDocumentSnapshots.size() -1);
 
 
-                   for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
-                       if(doc.getType() == DocumentChange.Type.ADDED){
+                       for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
+                           if(doc.getType() == DocumentChange.Type.ADDED){
 
-                           DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
-                           danger_list.add(dangerPost);
+                               DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
+                               danger_list.add(dangerPost);
 
-                           postAdapter.notifyDataSetChanged();
+                               postAdapter.notifyDataSetChanged();
 
 
+                           }
                        }
                    }
-               }
+                   }
+
+
+
            });
 
        }
@@ -129,7 +140,7 @@ public class HomeFragment extends Fragment {
                 .startAfter(lastVisible)
                 .limit(3);
 
-        nextQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        nextQuery.addSnapshotListener(getActivity(),new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (!queryDocumentSnapshots.isEmpty()){
