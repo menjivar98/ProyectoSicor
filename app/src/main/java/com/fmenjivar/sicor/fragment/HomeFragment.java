@@ -115,7 +115,9 @@ public class HomeFragment extends Fragment {
                        for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
                            if(doc.getType() == DocumentChange.Type.ADDED){
 
-                               DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
+
+                               String dangerPostId = doc.getDocument().getId();
+                               DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class).withId(dangerPostId);
 
                                if (isFirstpageFirstLoad){
                                    danger_list.add(dangerPost);
@@ -146,7 +148,7 @@ public class HomeFragment extends Fragment {
                 .startAfter(lastVisible)
                 .limit(3);
 
-        nextQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        nextQuery.addSnapshotListener(getActivity(),new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (!queryDocumentSnapshots.isEmpty()){
@@ -155,7 +157,9 @@ public class HomeFragment extends Fragment {
                     for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
                         if(doc.getType() == DocumentChange.Type.ADDED){
 
-                            DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
+
+                            String dangerPostId = doc.getDocument().getId();
+                            DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class).withId(dangerPostId);
                             danger_list.add(dangerPost);
 
                             postAdapter.notifyDataSetChanged();

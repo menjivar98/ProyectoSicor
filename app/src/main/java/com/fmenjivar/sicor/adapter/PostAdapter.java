@@ -17,11 +17,15 @@ import com.fmenjivar.sicor.R;
 import com.fmenjivar.sicor.models.DangerPost;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,6 +35,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public Context context;
 
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
     public PostAdapter(List<DangerPost> danger_list){
 
@@ -48,17 +53,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
+        final String dangerPostId = danger_list.get(position).DangerPostID;
+        final String currentUserId = firebaseAuth.getCurrentUser().getUid();
+
         String desc_data = danger_list.get(position).getDescription();
         holder.setDescText(desc_data);
 
         String image_url = danger_list.get(position).getImage_url();
-        holder.setBlogImage(image_url);
+        String thumbUri = danger_list.get(position).getImage_thumb();
+        holder.setBlogImage(image_url,thumbUri);
 
         String user_id = danger_list.get(position).getUser_id();
 
@@ -82,6 +93,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         long milliseconds = danger_list.get(position).getTimestamp().getTime();
         String dateString = DateFormat.format("dd/MM/yyyy",new Date(milliseconds)).toString();
 
+        //Likes Feature
+        holder.DangerLikeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Map<String,Object> likeMap = new HashMap<>();
+                likeMap.put("timestamp", FieldValue.serverTimestamp());
+
+
+
+                firebaseFirestore.collection("Post/" + dangerPostId + "/Likes").document(currentUserId)
+                        .set(likeMap);
+
+            }
+        });
+
         holder.setTime(dateString);
     }
 
@@ -98,10 +125,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView dateView;
         TextView postUserName;
         CircleImageView postUserImage;
+        ImageView DangerLikeBtn;
+        TextView DangerLikeCount;
+
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
+
+            DangerLikeBtn = mView.findViewById(R.id.post_like_btn);
+
         }
 
         private void  setDescText(String descText){
@@ -109,10 +142,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             desView.setText(descText);
         }
 
-        private void setBlogImage(String downloadUri){
+        private void setBlogImage(String downloadUri,String thumbUri){
 
             blogImageView = mView.findViewById(R.id.post_image);
-            Glide.with(context).load(downloadUri).into(blogImageView);
+
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.placeholderimage);
+
+            Glide.with(context).applyDefaultRequestOptions(requestOptions).load(downloadUri).thumbnail(
+                    Glide.with(context).load(thumbUri)
+            ).into(blogImageView);
 
         }
 

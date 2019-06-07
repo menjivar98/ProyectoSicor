@@ -4,7 +4,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 
-public class DangerPost {
+public class DangerPost extends  DangerPostId {
 
     private String user_id,image_url,description,danger,image_thumb;
 

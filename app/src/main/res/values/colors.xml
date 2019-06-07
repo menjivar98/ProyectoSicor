@@ -7,6 +7,9 @@
     <color name="White">#ffffff</color>
     <color name="colorProgressBarr">#F9AA33</color>
 
+    <color name="likeBtnGray">#747474</color>
+    <color name="likeBtnAccent">#F44336</color>
+
 </resources>
 
 
