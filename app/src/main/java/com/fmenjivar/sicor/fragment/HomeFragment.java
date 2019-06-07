@@ -47,6 +47,7 @@ public class HomeFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
     private DocumentSnapshot lastVisible;
+    private Boolean isFirstpageFirstLoad = true;
 
 
     public HomeFragment() {
@@ -106,26 +107,31 @@ public class HomeFragment extends Fragment {
                    if (e!=null){
                        Log.d(TAG,"Error: " + e.getMessage());
                    }else{
-                       lastVisible = queryDocumentSnapshots.getDocuments()
-                               .get(queryDocumentSnapshots.size() -1);
 
+                       if (isFirstpageFirstLoad){
+                           lastVisible = queryDocumentSnapshots.getDocuments().get(queryDocumentSnapshots.size() -1);
+                       }
 
                        for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
                            if(doc.getType() == DocumentChange.Type.ADDED){
 
                                DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
-                               danger_list.add(dangerPost);
+
+                               if (isFirstpageFirstLoad){
+                                   danger_list.add(dangerPost);
+                               }else {
+                                   danger_list.add(0,dangerPost);
+                               }
 
                                postAdapter.notifyDataSetChanged();
 
 
                            }
                        }
+
+                       isFirstpageFirstLoad = false;
                    }
-                   }
-
-
-
+               }
            });
 
        }
@@ -140,7 +146,7 @@ public class HomeFragment extends Fragment {
                 .startAfter(lastVisible)
                 .limit(3);
 
-        nextQuery.addSnapshotListener(getActivity(),new EventListener<QuerySnapshot>() {
+        nextQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (!queryDocumentSnapshots.isEmpty()){
@@ -157,6 +163,8 @@ public class HomeFragment extends Fragment {
 
                         }
                     }
+                }else {
+                    Log.d(TAG,"Error: " + e.getMessage());
                 }
 
             }
