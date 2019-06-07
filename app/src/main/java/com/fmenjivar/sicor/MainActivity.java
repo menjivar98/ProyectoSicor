@@ -63,42 +63,45 @@ public class MainActivity extends AppCompatActivity {
         notificationFragment = new NotificationFragment();
         accountFragment = new AccountFragment();
 
-        mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        replaceFragment(homeFragment);
+
+        if(mAuth.getCurrentUser() != null){
+            mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
 
-                switch (item.getItemId()){
+                    switch (item.getItemId()){
 
-                    case R.id.bottom_action_home:
-                        replaceFragment(homeFragment);
-                        return true;
-                    case R.id.bottom_action_notificaion:
-                        replaceFragment(notificationFragment);
-                        return true;
-                    case R.id.bottom_action_account:
-                        replaceFragment(accountFragment);
-                        return true;
+                        case R.id.bottom_action_home:
+                            replaceFragment(homeFragment);
+                            return true;
+                        case R.id.bottom_action_notificaion:
+                            replaceFragment(notificationFragment);
+                            return true;
+                        case R.id.bottom_action_account:
+                            replaceFragment(accountFragment);
+                            return true;
 
-                     default:
-                         return false;
+                        default:
+                            return false;
+                    }
+
                 }
+            });
 
-            }
-        });
+            addPostBtn =  findViewById(R.id.add_post_btn);
+            addPostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        addPostBtn =  findViewById(R.id.add_post_btn);
-        addPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent newPostIntent= new Intent(MainActivity.this, NewPostActivity.class);
-                startActivity(newPostIntent);
+                    Intent newPostIntent= new Intent(MainActivity.this, NewPostActivity.class);
+                    startActivity(newPostIntent);
 
 
-            }
-        });
-
+                }
+            });
+        }
 
     }
 

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.fmenjivar.sicor.R;
 import com.fmenjivar.sicor.adapter.PostAdapter;
 import com.fmenjivar.sicor.models.DangerPost;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment {
 
     //Firebase
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
 
     public HomeFragment() {
@@ -60,26 +62,32 @@ public class HomeFragment extends Fragment {
         post_list_view.setAdapter(postAdapter);
         post_list_view.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Post").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
-                    if(doc.getType() == DocumentChange.Type.ADDED){
-
-                        DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
-                        danger_list.add(dangerPost);
-
-                        postAdapter.notifyDataSetChanged();
+       firebaseAuth = FirebaseAuth.getInstance();
 
 
-                    }
-                }
-            }
-        });
+       if (firebaseAuth.getCurrentUser() != null){
+           firebaseFirestore = FirebaseFirestore.getInstance();
+           firebaseFirestore.collection("Post").addSnapshotListener(new EventListener<QuerySnapshot>() {
+               @Override
+               public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                   for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
+                       if(doc.getType() == DocumentChange.Type.ADDED){
 
-        return view;
+                           DangerPost dangerPost = doc.getDocument().toObject(DangerPost.class);
+                           danger_list.add(dangerPost);
+
+                           postAdapter.notifyDataSetChanged();
+
+
+                       }
+                   }
+               }
+           });
+
+
+       }
+
+       return view;
     }
 
 }

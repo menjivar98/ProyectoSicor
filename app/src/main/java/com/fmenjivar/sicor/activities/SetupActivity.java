@@ -124,11 +124,12 @@ public class SetupActivity extends AppCompatActivity {
                final String user_name = setupName.getText().toString();
 
                 if(isCHanged){
-
                     if(!user_name.isEmpty() && mainImageURI != null){
                         setupUser(user_name);
                     }
+
                 }else{
+
                     storeFirestone(null,user_name);
                 }
 
