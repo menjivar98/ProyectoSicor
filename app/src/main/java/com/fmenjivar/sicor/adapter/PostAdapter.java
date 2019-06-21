@@ -57,6 +57,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         String desc_data = danger_list.get(position).getDescription();
         holder.setDescText(desc_data);
 
+        String danger_post = danger_list.get(position).getDanger();
+        holder.setPostDanger(danger_post);
+
         String image_url = danger_list.get(position).getImage_url();
         holder.setBlogImage(image_url);
 
@@ -98,6 +101,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView dateView;
         TextView postUserName;
         CircleImageView postUserImage;
+        TextView dangerView;
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,6 +111,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private void  setDescText(String descText){
             desView = mView.findViewById(R.id.post_desc);
             desView.setText(descText);
+        }
+
+        private void setPostDanger(String danger) {
+            dangerView = mView.findViewById(R.id.post_danger);
+            dangerView.setText(danger);
         }
 
         private void setBlogImage(String downloadUri){

@@ -53,7 +53,7 @@ public class NewPostActivity extends AppCompatActivity {
     Chip chipLow,chipMedium, chipHigh;
     Button newPostBtn;
     ProgressBar progressBar;
-    String opc,low,medium,high;
+    String opc;
     String desc;
 
     private StorageReference storageReference;
@@ -91,6 +91,22 @@ public class NewPostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 BringImagePicker();
             }
+        });
+
+        chipLow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { opc = "Low"; }
+        });
+
+        chipMedium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { opc = "Medium"; }
+        });
+
+
+        chipHigh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { opc = "High"; }
         });
 
         newPostBtn.setOnClickListener(new View.OnClickListener() {
