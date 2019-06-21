@@ -166,7 +166,7 @@ public class NewPostActivity extends AppCompatActivity {
 
                                                         if(task.isSuccessful()){
 
-                                                            showMessage("Post was added");
+                                                            showMessage("The Post was added");
                                                             Intent maintIntent = new Intent(NewPostActivity.this,MainActivity.class);
                                                             startActivity(maintIntent);
                                                             finish();

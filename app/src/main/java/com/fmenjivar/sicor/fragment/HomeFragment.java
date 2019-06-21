@@ -86,11 +86,11 @@ public class HomeFragment extends Fragment {
                     Boolean reachedBottom =  !recyclerView.canScrollVertically(-1);
 
                     if (reachedBottom){
-
+                        /*
                         String desc = lastVisible.getString("description");
 
                         Toast.makeText(container.getContext(),"Reached: " + desc,Toast.LENGTH_SHORT ).show();
-
+                        */
 
                         loadMorePost();
 
