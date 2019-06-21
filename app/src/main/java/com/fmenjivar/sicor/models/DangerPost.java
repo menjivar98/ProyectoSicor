@@ -63,7 +63,7 @@ public class DangerPost {
     }
 
     public void setDanger(String danger) {
-        danger = danger;
+        this.danger = danger;
     }
 
     public String getImage_thumb() {

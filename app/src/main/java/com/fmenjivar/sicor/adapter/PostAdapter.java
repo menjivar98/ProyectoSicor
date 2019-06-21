@@ -57,8 +57,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         String desc_data = danger_list.get(position).getDescription();
         holder.setDescText(desc_data);
 
-        String danger = danger_list.get(position).getDanger();
-        holder.setPostDanger(danger);
+        String danger_post = danger_list.get(position).getDanger();
+        holder.setPostDanger(danger_post);
 
         String image_url = danger_list.get(position).getImage_url();
         holder.setBlogImage(image_url);
