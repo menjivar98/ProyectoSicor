@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.fmenjivar.sicor.R;
 import com.fmenjivar.sicor.adapter.PostAdapter;
 import com.fmenjivar.sicor.models.DangerPost;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -48,6 +49,7 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private DocumentSnapshot lastVisible;
     private Boolean isFirstpageFirstLoad = true;
+    private FloatingActionButton addPost;
 
 
     public HomeFragment() {
@@ -63,6 +65,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        addPost = getActivity().findViewById(R.id.add_post_btn);
+        addPost.show();
 
         danger_list = new ArrayList<>();
         post_list_view = view.findViewById(R.id.post_list_view);

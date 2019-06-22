@@ -16,6 +16,7 @@ import com.fmenjivar.sicor.MainActivity;
 import com.fmenjivar.sicor.R;
 import com.fmenjivar.sicor.activities.LoginActivity;
 import com.fmenjivar.sicor.activities.SetupActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -32,15 +33,22 @@ public class AccountFragment extends Fragment {
     private  FirebaseAuth mAuth;
     private Button buttonSettings;
     private Button buttonlogOut;
+    private FloatingActionButton addPost;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        // Inflate the layout for this fragment
         mAuth = FirebaseAuth.getInstance();
+
+        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_account, container, false);
+
+
+        addPost = getActivity().findViewById(R.id.add_post_btn);
+        addPost.hide();
+
         v.findViewById(R.id.btnAccountSett).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
