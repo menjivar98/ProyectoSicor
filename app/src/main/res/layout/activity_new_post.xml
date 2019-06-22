@@ -20,7 +20,7 @@
         android:enabled="true"
         android:gravity="center"
         android:hint="@string/enter_a_description"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:maxLines="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -80,6 +80,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
         android:text="@string/chip_low"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/image_post" />
@@ -92,6 +93,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
         android:text="@string/chip_Medium"
         app:layout_constraintStart_toEndOf="@+id/chip_low"
         app:layout_constraintTop_toBottomOf="@+id/image_post" />
@@ -104,6 +106,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
         android:text="@string/chip_high"
         app:layout_constraintStart_toEndOf="@+id/chip_medium"
         app:layout_constraintTop_toBottomOf="@+id/image_post" />
