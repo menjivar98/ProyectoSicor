@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 public class DangerPost {
 
-    private String user_id,image_url,description,danger,image_thumb, title;
+    private String user_id, image_url, title, description, danger, image_thumb;
 
 
 
@@ -14,14 +14,14 @@ public class DangerPost {
 
     public DangerPost(){}
 
-    public DangerPost(String user_id, String image_url, String description, String danger, String image_thumb,Date timestamp) {
+    public DangerPost(String user_id, String image_url, String description, String title,String danger, String image_thumb,Date timestamp) {
         this.user_id = user_id;
         this.image_url = image_url;
+        this.title = title;
         this.description = description;
         this.danger = danger;
         this.image_thumb = image_thumb;
         this.timestamp = timestamp;
-
     }
 
     public Date getTimestamp() {
@@ -57,6 +57,10 @@ public class DangerPost {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setTitle(String title) { this.title = title;}
+
+    public String getTitle() { return title; }
 
     public String getDanger() {
         return danger;

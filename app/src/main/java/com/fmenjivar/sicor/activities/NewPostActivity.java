@@ -10,12 +10,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.fmenjivar.sicor.MainActivity;
 import com.fmenjivar.sicor.R;
@@ -39,7 +37,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
@@ -49,12 +46,12 @@ public class NewPostActivity extends AppCompatActivity {
 
     ImageView newPostImage;
 
+    EditText newPostTitle;
     EditText newPostDesc;
     Chip chipLow,chipMedium, chipHigh;
     Button newPostBtn;
     ProgressBar progressBar;
     String opc;
-    String desc;
 
     private StorageReference storageReference;
     private FirebaseFirestore firebaseFirestore;
@@ -72,7 +69,8 @@ public class NewPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_post);
 
         newPostImage = findViewById(R.id.image_post);
-        newPostDesc = findViewById(R.id.edit_post);
+        newPostTitle = findViewById(R.id.et_post_title);
+        newPostDesc = findViewById(R.id.et_post_desc);
         chipLow = findViewById(R.id.chip_low);
         chipMedium = findViewById(R.id.chip_medium);
         chipHigh = findViewById(R.id.chip_high);
@@ -113,9 +111,10 @@ public class NewPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final String title = newPostTitle.getText().toString();
                 final String desc = newPostDesc.getText().toString();
 
-                if(!desc.isEmpty() && postImageUri != null){
+                if(!title.isEmpty() && !desc.isEmpty() && postImageUri != null){
                     progressBar.setVisibility(View.VISIBLE);
 
                     final String randomName = UUID.randomUUID().toString();
@@ -154,6 +153,7 @@ public class NewPostActivity extends AppCompatActivity {
 
                                                 Map<String,Object> postMap = new HashMap<>();
                                                 postMap.put("image_url",uri.toString());
+                                                postMap.put("title",title);
                                                 postMap.put("description",desc);
                                                 postMap.put("image_thumb",uploadTask.toString());
                                                 postMap.put("user_id",current_user_id);
@@ -165,59 +165,36 @@ public class NewPostActivity extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<DocumentReference> task) {
 
                                                         if(task.isSuccessful()){
-
                                                             showMessage("The Post was added");
                                                             Intent maintIntent = new Intent(NewPostActivity.this,MainActivity.class);
                                                             startActivity(maintIntent);
                                                             finish();
-
-
-                                                        }else {
+                                                        }/*else {
 
                                                         }
-
+                                                        */
                                                         progressBar.setVisibility(View.INVISIBLE);
                                                     }
-
-
-
                                                 });
-
                                             }
                                         });
-
-
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
 
-
-
                                     }
                                 });
-
-
-
                             }
-
                         }
                     });
-
-
-
                 }else{
-                    showMessage("Please complete all the field");
+                    showMessage("Please fill out all required fields");
                 }
-
-
-
             }
         });
 
     }
-
-
 
     private void BringImagePicker() {
         CropImage.activity()
@@ -225,7 +202,6 @@ public class NewPostActivity extends AppCompatActivity {
                 .setMinCropResultSize(512,512)
                 .setAspectRatio(1,1)
                 .start(this);
-
     }
 
     @Override
@@ -245,13 +221,7 @@ public class NewPostActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void showMessage(String text) {
         Toast.makeText(getApplicationContext(), text,Toast.LENGTH_SHORT).show();
     }
-
-
-
-
 }

@@ -60,7 +60,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/post_date"
-                app:layout_constraintBottom_toTopOf="@+id/post_desc"
+                app:layout_constraintBottom_toTopOf="@+id/post_title"
                 app:layout_constraintStart_toEndOf="@+id/post_user_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,13 +77,13 @@
                 app:srcCompat="@drawable/placeholderimage" />
 
             <TextView
-                android:id="@+id/post_desc"
+                android:id="@+id/post_title"
                 android:layout_width="317dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_marginBottom="34dp"
-                android:text="Lorem ipsum dolor sit amet regione urbanitas vis qui elit populo ut"
+                android:text="@string/lorem"
                 app:layout_constraintBottom_toTopOf="@+id/post_image"
                 app:layout_constraintStart_toEndOf="@+id/post_user_image" />
 
@@ -96,7 +96,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/high"
-                app:layout_constraintBottom_toTopOf="@+id/post_desc"
+                app:layout_constraintBottom_toTopOf="@+id/post_title"
                 app:layout_constraintStart_toEndOf="@+id/post_date"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />

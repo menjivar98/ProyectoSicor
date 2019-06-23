@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/edit_post2"
+        android:id="@+id/et_post_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_post"
+        android:id="@+id/et_post_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -126,13 +126,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_post_desc" />
 
     <ProgressBar
         android:id="@+id/progress_bar_post"
         style="?android:progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminate="true"
         android:visibility="invisible"
