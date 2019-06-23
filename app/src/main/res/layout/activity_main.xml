@@ -20,7 +20,7 @@
         android:id="@+id/add_post_btn"
         android:layout_marginBottom="65dp"
         android:layout_marginRight="8dp"
-        android:src="@drawable/ic_add_white_24dp"
+        android:src="@mipmap/create_post"
         app:backgroundTint="@color/Secondary"
         android:layout_marginEnd="8dp" />
 
