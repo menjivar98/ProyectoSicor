@@ -26,4 +26,7 @@
     <string name="sign_up_for_sicor">Sign Up for Sicor</string>
     <string name="are_you_new_here_create_an_account">Are you new here? Create an account!</string>
     <string name="enter_a_description">Enter a description</string>
+    <string name="post_date">Post date</string>
+    <string name="high">High</string>
+    <string name="username">Username</string>
 </resources>
