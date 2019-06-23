@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 public class DangerPost {
 
-    private String user_id,image_url,description,danger,image_thumb;
+    private String user_id,image_url,description,danger,image_thumb, title;
 
 
 
