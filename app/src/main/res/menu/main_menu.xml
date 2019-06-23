@@ -6,10 +6,4 @@
         android:icon="@mipmap/action_search"
         android:title="@string/action_search"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/action_setting_btn"
-        android:title="@string/action_setting" />
-    <item
-        android:id="@+id/action_logout_btn"
-        android:title="@string/action_logout" />
 </menu>

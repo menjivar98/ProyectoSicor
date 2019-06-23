@@ -86,10 +86,8 @@ public class MainActivity extends AppCompatActivity {
                         default:
                             return false;
                     }
-
                 }
             });
-
             addPostBtn =  findViewById(R.id.add_post_btn);
             addPostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -136,23 +134,17 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
         }
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
-
         return true;
     }
-
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        
-        
         switch (item.getItemId()){
             case R.id.action_logout_btn: 
                 logOut();
@@ -160,24 +152,18 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_setting_btn:
                 Intent settingIntent = new Intent(MainActivity.this, SetupActivity.class);
                 startActivity(settingIntent);
-
         }
-        
-        
         return true;
     }
 
     private void logOut() {
-
         mAuth.signOut();
         sendtoLogin();
-
     }
-
+*/
     private void sendtoLogin() {
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
-
     }
 
     private void showMessage(String text) {
