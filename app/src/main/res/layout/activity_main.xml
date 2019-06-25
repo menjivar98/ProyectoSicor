@@ -6,39 +6,48 @@
     android:layout_height="match_parent">
 
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/main_toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"></androidx.appcompat.widget.Toolbar>
+        android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:id="@+id/add_post_btn"
-        android:layout_marginBottom="65dp"
-        android:layout_marginRight="8dp"
-        android:src="@mipmap/create_post"
-        app:backgroundTint="@color/Secondary"
-        android:layout_marginEnd="8dp" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/mainBottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_menu"
-        android:layout_gravity="bottom">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@color/colorPrimary" />
 
-    <FrameLayout
-        android:id="@+id/main_cointer"
-        android:layout_width="match_parent"
-        android:layout_height="549dp"
-        android:layout_marginTop="50dp">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_post_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mainBottomNav"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="13dp"
+            android:src="@mipmap/create_post"
+            app:backgroundTint="@color/Secondary" />
 
-    </FrameLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/mainBottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            app:menu="@menu/bottom_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
+        <FrameLayout
+            android:id="@+id/main_cointer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_toolbar"
+            android:layout_above="@id/mainBottomNav"
+            />
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
