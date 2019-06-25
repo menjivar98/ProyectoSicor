@@ -1,19 +1,16 @@
 package com.fmenjivar.sicor.fragment;
 
 
-import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.fmenjivar.sicor.R;
 import com.fmenjivar.sicor.adapter.PostAdapter;
@@ -40,16 +37,13 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  */
 public class HomeFragment extends Fragment {
 
-    RecyclerView post_list_view;
     private List<DangerPost> danger_list;
-    PostAdapter postAdapter;
+    private PostAdapter postAdapter;
 
     //Firebase
     private FirebaseFirestore firebaseFirestore;
-    private FirebaseAuth firebaseAuth;
     private DocumentSnapshot lastVisible;
     private Boolean isFirstpageFirstLoad = true;
-    private FloatingActionButton addPost;
 
 
     public HomeFragment() {
@@ -60,24 +54,24 @@ public class HomeFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        addPost = getActivity().findViewById(R.id.add_post_btn);
+        FloatingActionButton addPost = getActivity().findViewById(R.id.add_post_btn);
         addPost.show();
 
         danger_list = new ArrayList<>();
-        post_list_view = view.findViewById(R.id.post_list_view);
+        RecyclerView post_list_view = view.findViewById(R.id.post_list_view);
 
         postAdapter = new PostAdapter(danger_list);
 
         post_list_view.setAdapter(postAdapter);
         post_list_view.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-       firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
 
        if (firebaseAuth.getCurrentUser() != null){
@@ -88,7 +82,7 @@ public class HomeFragment extends Fragment {
                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                    super.onScrollStateChanged(recyclerView, newState);
 
-                    Boolean reachedBottom =  !recyclerView.canScrollVertically(-1);
+                    boolean reachedBottom =  !recyclerView.canScrollVertically(-1);
 
                     if (reachedBottom){
                         /*
@@ -144,7 +138,7 @@ public class HomeFragment extends Fragment {
        return view;
     }
 
-    public void loadMorePost(){
+    private void loadMorePost(){
 
         Query nextQuery = firebaseFirestore.collection("Post")
                 .orderBy("timestamp",Query.Direction.DESCENDING)
@@ -154,7 +148,9 @@ public class HomeFragment extends Fragment {
         nextQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if (!queryDocumentSnapshots.isEmpty()){
+                if (e != null){
+                    Log.d(TAG,"Error: " + e.getMessage());
+                }else {
                     lastVisible = queryDocumentSnapshots.getDocuments()
                             .get(queryDocumentSnapshots.size() -1);
                     for(DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
@@ -164,12 +160,8 @@ public class HomeFragment extends Fragment {
                             danger_list.add(dangerPost);
 
                             postAdapter.notifyDataSetChanged();
-
-
                         }
                     }
-                }else {
-                    Log.d(TAG,"Error: " + e.getMessage());
                 }
 
             }
