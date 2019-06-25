@@ -107,9 +107,9 @@ class HomeFragment : Fragment() {
                             val dangerPost = doc.document.toObject<DangerPost>(DangerPost::class.java!!)
 
                             if (isFirstpageFirstLoad!!) {
-                                danger_list!!.add(dangerPost)
+                                danger_list?.add(dangerPost)
                             } else {
-                                danger_list!!.add(0, dangerPost)
+                                danger_list?.add(0, dangerPost)
                             }
 
                             postAdapter.notifyDataSetChanged()
@@ -141,7 +141,7 @@ class HomeFragment : Fragment() {
                     if (doc.type == DocumentChange.Type.ADDED) {
 
                         val dangerPost = doc.document.toObject<DangerPost>(DangerPost::class.java!!)
-                        danger_list!!.add(dangerPost)
+                        danger_list?.add(dangerPost)
 
                         postAdapter.notifyDataSetChanged()
 
