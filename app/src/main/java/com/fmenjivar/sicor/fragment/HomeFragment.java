@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                    super.onScrollStateChanged(recyclerView, newState);
 
-                    Boolean reachedBottom =  !recyclerView.canScrollVertically(-1);
+                    Boolean reachedBottom =  !recyclerView.canScrollVertically(1);
 
                     if (reachedBottom){
                         /*
