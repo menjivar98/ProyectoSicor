@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NewPostActivity">
+
+
+    <EditText
+        android:id="@+id/et_post_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:enabled="true"
+        android:gravity="center"
+        android:hint="@string/enter_a_description"
+        android:inputType="textMultiLine"
+        android:maxLines="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_post" />
+
+    <ImageView
+        android:id="@+id/image_post"
+        android:layout_width="395dp"
+        android:layout_height="253dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholderpostimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_post_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:enabled="true"
+        android:gravity="center"
+        android:hint="@string/post_hint"
+        android:inputType="text"
+        android:maxLines="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_post" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/TextView_post"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/image_post" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_low"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="@string/chip_low"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/image_post" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_medium"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="@string/chip_Medium"
+        app:layout_constraintStart_toEndOf="@+id/chip_low"
+        app:layout_constraintTop_toBottomOf="@+id/image_post" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_high"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="@string/chip_high"
+        app:layout_constraintStart_toEndOf="@+id/chip_medium"
+        app:layout_constraintTop_toBottomOf="@+id/image_post" />
+
+    <Button
+        android:id="@+id/post_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Post"
+        app:backgroundTint="@color/Secondary"
+        app:icon="@android:drawable/ic_menu_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_post_desc" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_post"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
