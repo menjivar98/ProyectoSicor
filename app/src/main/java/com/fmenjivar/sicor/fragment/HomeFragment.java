@@ -79,7 +79,6 @@ public class HomeFragment extends Fragment {
 
        firebaseAuth = FirebaseAuth.getInstance();
 
-
        if (firebaseAuth.getCurrentUser() != null){
            firebaseFirestore = FirebaseFirestore.getInstance();
 
@@ -103,7 +102,7 @@ public class HomeFragment extends Fragment {
                }
            });*/
 
-           Query firstQuery = firebaseFirestore.collection("Post").orderBy("timestamp",Query.Direction.DESCENDING).limit(3);
+           Query firstQuery = firebaseFirestore.collection("Post").orderBy("timestamp",Query.Direction.DESCENDING);
 
            firstQuery.addSnapshotListener(getActivity(),new EventListener<QuerySnapshot>() {
                @Override
