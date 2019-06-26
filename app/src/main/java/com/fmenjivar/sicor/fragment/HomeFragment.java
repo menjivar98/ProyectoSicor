@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
        if (firebaseAuth.getCurrentUser() != null){
            firebaseFirestore = FirebaseFirestore.getInstance();
 
-           post_list_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
+          /* post_list_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
                @Override
                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                    super.onScrollStateChanged(recyclerView, newState);
@@ -97,11 +97,11 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(container.getContext(),"Reached: " + desc,Toast.LENGTH_SHORT ).show();
                         */
 
-                        loadMorePost();
+              /*          loadMorePost();
 
                     }
                }
-           });
+           });*/
 
            Query firstQuery = firebaseFirestore.collection("Post").orderBy("timestamp",Query.Direction.DESCENDING).limit(3);
 
@@ -144,7 +144,7 @@ public class HomeFragment extends Fragment {
        return view;
     }
 
-    public void loadMorePost(){
+  /*  public void loadMorePost(){
 
         Query nextQuery = firebaseFirestore.collection("Post")
                 .orderBy("timestamp",Query.Direction.DESCENDING)
@@ -175,6 +175,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-    }
+    }*/
 
 }
