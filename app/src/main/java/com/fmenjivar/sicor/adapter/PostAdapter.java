@@ -1,6 +1,7 @@
 package com.fmenjivar.sicor.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -62,6 +64,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.setDescText(desc_data);
 
         String danger_post = danger_list.get(position).getDanger();
+        //holder.coloring(danger_post);
         holder.setPostDanger(danger_post);
 
         String image_url = danger_list.get(position).getImage_url();
@@ -106,6 +109,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView postUserName;
         CircleImageView postUserImage;
         TextView dangerView;
+        ConstraintLayout cLayout;
+
+        private void coloring(String danger) {
+            cLayout = mView.findViewById(R.id.inBoxed);
+            switch (danger) {
+                case "Low":
+                    cLayout.setBackgroundColor(Color.parseColor("#78FF67"));
+                    break;
+                case "Medium":
+                    cLayout.setBackgroundColor(Color.parseColor("#FFCF67"));
+                    break;
+                case "High":
+                    cLayout.setBackgroundColor(Color.parseColor("#FF6767"));
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);

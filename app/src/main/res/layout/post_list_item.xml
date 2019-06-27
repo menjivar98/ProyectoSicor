@@ -44,10 +44,13 @@
                 android:id="@+id/post_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
                 android:text="@string/username"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tv_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/post_user_image" />
 
@@ -69,7 +72,7 @@
                 android:id="@+id/post_image"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="90dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,8 +87,9 @@
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginBottom="68dp"
+                android:layout_marginBottom="96dp"
                 android:text="@string/lorem"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/post_image"
                 app:layout_constraintStart_toEndOf="@+id/post_user_image" />
 
@@ -105,19 +109,16 @@
 
             <TextView
                 android:id="@+id/tv_description"
-                android:layout_width="318dp"
-                android:layout_height="53dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="7dp"
+                android:layout_width="273dp"
+                android:layout_height="87dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/lorem"
                 app:layout_constraintBottom_toTopOf="@+id/post_image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/post_username"
-                app:layout_constraintTop_toBottomOf="@+id/post_title" />
+                app:layout_constraintStart_toEndOf="@+id/post_user_image"
+                app:layout_constraintTop_toBottomOf="@+id/post_title"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
