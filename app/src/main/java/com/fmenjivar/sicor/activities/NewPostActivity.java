@@ -111,7 +111,7 @@ public class NewPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /***
+                /*
                  * Esto estas linea de codigo se ejecutan al momento de dar click y agarra la variable title
                  * desc y verifica todos los campos solicitados no esten vacios y los datos se guardan en hashmap y
                  * esto se le pasa a la funcion de firebase para poder guardar todo los datos.
