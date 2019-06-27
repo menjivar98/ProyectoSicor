@@ -51,13 +51,9 @@ public class HomeFragment extends Fragment {
     private Boolean isFirstpageFirstLoad = true;
     private FloatingActionButton addPost;
 
-
     public HomeFragment() {
         // Required empty public constructor
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,

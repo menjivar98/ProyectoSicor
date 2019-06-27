@@ -45,7 +45,6 @@ public class SetupActivity extends AppCompatActivity {
     private CircleImageView setupImage;
     private  Uri mainImageURI = null;
     private EditText setupName;
-    private Button setupBtn;
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
@@ -65,7 +64,7 @@ public class SetupActivity extends AppCompatActivity {
 
         setupImage = findViewById(R.id.setup_image);
         setupName = findViewById(R.id.setup_text);
-        setupBtn = findViewById(R.id.button_setup);
+        Button setupBtn = findViewById(R.id.button_setup);
 
         firebaseAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -90,11 +89,7 @@ public class SetupActivity extends AppCompatActivity {
                         placeholderRequest.placeholder(R.drawable.default_profile);
 
                         Glide.with(SetupActivity.this).setDefaultRequestOptions(placeholderRequest).load(image).into(setupImage);
-
-
                     }
-
-
                 }else{
                     showMessageErro(task.getException().getMessage());
                 }
@@ -107,13 +102,11 @@ public class SetupActivity extends AppCompatActivity {
         setupImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                     checkAndRequesForPermission();
                 }else{
                     BringImagePicker();
                 }
-
             }
         });
 
@@ -132,10 +125,8 @@ public class SetupActivity extends AppCompatActivity {
 
                     storeFirestone(null,user_name);
                 }
-
             }
         });
-
     }
 
 
@@ -157,7 +148,6 @@ public class SetupActivity extends AppCompatActivity {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setAspectRatio(1,1)
                 .start(SetupActivity.this);
-
     }
 
 
@@ -168,9 +158,7 @@ public class SetupActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 mainImageURI = result.getUri();
                 setupImage.setImageURI(mainImageURI);
-
                 isCHanged = true;
-
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
@@ -185,18 +173,12 @@ public class SetupActivity extends AppCompatActivity {
         image_path.putFile(mainImageURI).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-
                 image_path.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-
                         storeFirestone(uri,userName);
-
-
                     }
                 });
-
-
             }
         });
 
@@ -208,13 +190,10 @@ public class SetupActivity extends AppCompatActivity {
         Map<String, String> userMap = new HashMap<>();
 
         if(uri != null){
-
             userMap.put("name",userName);
             userMap.put("image",uri.toString());
         }else{
-
                 userMap.put("image",mainImageURI.toString());
-
         }
 
 

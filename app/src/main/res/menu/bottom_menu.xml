@@ -9,14 +9,14 @@
         android:title="@string/btn_bottom_navigation"
         app:showAsAction="always" />
     <item
-        android:id="@+id/bottom_action_notificaion"
-        android:icon="@drawable/outline_notifications_white_36"
+        android:id="@+id/bottom_action_my_posts"
+        android:icon="@drawable/outline_person_white_36"
         android:iconTint="@color/White"
         android:title="@string/bottom_notification_texr"
         app:showAsAction="always" />
     <item
         android:id="@+id/bottom_action_account"
-        android:icon="@drawable/outline_person_white_36"
+        android:icon="@drawable/ic_settings_black_24dp"
         android:iconTint="@color/White"
         android:title="@string/bottom_ac_text"
         app:showAsAction="always" />

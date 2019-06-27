@@ -18,7 +18,7 @@ import com.fmenjivar.sicor.activities.NewPostActivity;
 import com.fmenjivar.sicor.activities.SetupActivity;
 import com.fmenjivar.sicor.fragment.AccountFragment;
 import com.fmenjivar.sicor.fragment.HomeFragment;
-import com.fmenjivar.sicor.fragment.NotificationFragment;
+import com.fmenjivar.sicor.fragment.MyPosts;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     HomeFragment homeFragment;
-    NotificationFragment notificationFragment;
+    MyPosts myPosts;
     AccountFragment accountFragment;
 
     @Override
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Fragments
         homeFragment = new HomeFragment();
-        notificationFragment = new NotificationFragment();
+        myPosts = new MyPosts();
         accountFragment = new AccountFragment();
 
         replaceFragment(homeFragment);
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.bottom_action_home:
                             replaceFragment(homeFragment);
                             return true;
-                        case R.id.bottom_action_notificaion:
-                            replaceFragment(notificationFragment);
+                        case R.id.bottom_action_my_posts:
+                            replaceFragment(myPosts);
                             return true;
                         case R.id.bottom_action_account:
                             replaceFragment(accountFragment);
