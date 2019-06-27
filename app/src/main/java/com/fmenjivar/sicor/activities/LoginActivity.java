@@ -19,6 +19,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/*
+
+    Esta clase lo que hace es que la primera pantallas que le aperece al usuario y asi
+    recibir los datos del usuario y asi poder procesarlos y ver si esta registrado en la
+    base de datos y la base de datos esta creada con firebase
+
+
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText loginEmailText;
@@ -27,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginRegBtn;
     private ProgressBar loginProgress;
 
+
+    //Esta linea de codigo donde declaramos que queremos utilizar firebase
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //Aqui inicializamos la variable para asi obtener una instancia
         mAuth = FirebaseAuth.getInstance();
 
         loginEmailText = findViewById(R.id.login_email);
@@ -49,6 +62,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 String loginEmail = loginEmailText.getText().toString();
                 String loginPass = loginPassText.getText().toString();
+
+                /*
+                    Aqui en el momento de dar click en el boton primero se extrae los datos y se verifican
+                    que estos campos no esten vacios y datos recibidos estan guardados en la base de datos
+                    entonces es cuando se pasa a la pantalla home
+                 */
 
                 if (!loginEmail.isEmpty() && !loginPass.isEmpty()){
                     signIn(loginEmail,loginPass);
@@ -86,6 +105,13 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
+
+    /***
+     *
+     * @param loginEmail  estos parametros son recibidos en el momento que el usuario le da click al boton y estos son comparados
+     *                    para ver si estan registrado
+     * @param loginPass
+     */
 
     private void signIn(String loginEmail, String loginPass) {
 

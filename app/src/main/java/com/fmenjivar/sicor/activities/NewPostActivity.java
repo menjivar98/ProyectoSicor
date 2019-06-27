@@ -111,6 +111,12 @@ public class NewPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                /***
+                 * Esto estas linea de codigo se ejecutan al momento de dar click y agarra la variable title
+                 * desc y verifica todos los campos solicitados no esten vacios y los datos se guardan en hashmap y
+                 * esto se le pasa a la funcion de firebase para poder guardar todo los datos.
+                 */
+
                 final String title = newPostTitle.getText().toString();
                 final String desc = newPostDesc.getText().toString();
 
@@ -127,6 +133,11 @@ public class NewPostActivity extends AppCompatActivity {
                                 File actualImageFile= new File(postImageUri.getPath());
 
                                 try {
+                                    /*
+                                        Esta linea de codigo comprime la imagen agrega para que se mas facil poder
+                                        guardar
+                                     */
+
                                     compressedImageFile = new Compressor(NewPostActivity.this)
                                             .setMaxHeight(200)
                                             .setMaxWidth(200)
@@ -169,10 +180,7 @@ public class NewPostActivity extends AppCompatActivity {
                                                             Intent maintIntent = new Intent(NewPostActivity.this,MainActivity.class);
                                                             startActivity(maintIntent);
                                                             finish();
-                                                        }/*else {
-
                                                         }
-                                                        */
                                                         progressBar.setVisibility(View.INVISIBLE);
                                                     }
                                                 });
