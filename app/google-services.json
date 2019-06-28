@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:328021427613:android:b1dbb940c458f3ca",
+        "android_client_info": {
+          "package_name": "com.alffer.sicor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328021427613-f8v4lck2t5netulrn9u9v29cjeke2ril.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alffer.sicor",
+            "certificate_hash": "ece789796f7115674f954d5afc37a9bc345cca28"
+          }
+        },
+        {
+          "client_id": "328021427613-m4aro3nltlgeb79ggsflhu27bobmfreb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfBTqSM0tgvuHKK5SSb0hfn8d3ZX1qk0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328021427613-m4aro3nltlgeb79ggsflhu27bobmfreb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:328021427613:android:89a6f053829ddabe",
         "android_client_info": {
           "package_name": "com.fmenjivar.sicor"
