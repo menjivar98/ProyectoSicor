@@ -4,7 +4,8 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.fmenjivar.sicor"
+        //Lo que hice fue cambiar el com.fmenjivar.sicor por com.alffer.sicor
+        applicationId "com.alffer.sicor"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
