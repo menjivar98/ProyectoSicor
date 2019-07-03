@@ -9,15 +9,15 @@
     <string name="btn_register_2">Sign in</string>
     <string name="btn_register">Create account</string>
     <string name="reg_confirm_password">Confirm password</string>
-    <string name="text_of_btn_setup">Save account settings</string>
+    <string name="text_of_btn_setup">Save</string>
     <string name="post_hint">Add a title</string>
     <string name="TextView_post">Risk level:</string>
     <string name="chip_low">Low</string>
     <string name="chip_Medium">Medium</string>
     <string name="chip_high">High</string>
     <string name="bottom_home_text">Home</string>
-    <string name="bottom_notification_texr">Notificacion</string>
-    <string name="bottom_ac_text">Account</string>
+    <string name="bottom_myposts_text">My Posts</string>
+    <string name="bottom_ac_text">Settings</string>
     <string name="btn_homce_text">Home</string>
     <string name="btn_bottom_navigation">Home</string>
 

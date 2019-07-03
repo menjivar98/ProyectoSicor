@@ -18,49 +18,47 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/setup_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="91dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:src="@drawable/default_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintEnd_toStartOf="@+id/setup_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setupToolbar" />
 
     <EditText
         android:id="@+id/setup_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:inputType="textPersonName"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:hint="Name"
+        android:inputType="textPersonName"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setup_image" />
+        app:layout_constraintStart_toEndOf="@+id/setup_image"
+        app:layout_constraintTop_toBottomOf="@+id/setupToolbar" />
 
     <Button
         android:id="@+id/button_setup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="408dp"
         android:background="@color/Secondary"
         android:backgroundTint="@color/Secondary"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="12dp"
         android:padding="15dp"
-        android:layout_marginRight="12dp"
         android:text="@string/text_of_btn_setup"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setup_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

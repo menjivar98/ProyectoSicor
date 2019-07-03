@@ -29,7 +29,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
-    public List<DangerPost> danger_list;
+    private List<DangerPost> danger_list;
     public Context context;
 
     private FirebaseFirestore firebaseFirestore;
@@ -82,15 +82,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
                     holder.setUserData(userName,userImage);
 
-                }/*else{
-
-                }*/
+                }
             }
         });
 
         long milliseconds = danger_list.get(position).getTimestamp().getTime();
         String dateString = DateFormat.format("dd/MM/yyyy",new Date(milliseconds)).toString();
-
         holder.setTime(dateString);
     }
 
@@ -111,22 +108,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView dangerView;
         ConstraintLayout cLayout;
 
-        private void coloring(String danger) {
+       /* private void coloring(String danger) {
             cLayout = mView.findViewById(R.id.inBoxed);
             switch (danger) {
                 case "Low":
-                    cLayout.setBackgroundColor(Color.parseColor("#78FF67"));
+                    cLayout.setBackgroundColor(Color.parseColor("#adffa3"));
                     break;
                 case "Medium":
-                    cLayout.setBackgroundColor(Color.parseColor("#FFCF67"));
+                    cLayout.setBackgroundColor(Color.parseColor("#fdb14b"));
                     break;
                 case "High":
-                    cLayout.setBackgroundColor(Color.parseColor("#FF6767"));
+                    cLayout.setBackgroundColor(Color.parseColor("b74d3e"));
                     break;
                 default:
                     break;
             }
-        }
+        }*/
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -145,7 +142,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         private void setPostDanger(String danger) {
             dangerView = mView.findViewById(R.id.post_danger);
+            cLayout = mView.findViewById(R.id.inBoxed);
             dangerView.setText(danger);
+            if(danger.equals("Low")) {
+                cLayout.setBackgroundColor(Color.parseColor("#ACC18A"));
+            }
+            if(danger.equals("Medium")) {
+                cLayout.setBackgroundColor(Color.parseColor("#FBA16C"));
+            }
+            if(danger.equals("High")) {
+                cLayout.setBackgroundColor(Color.parseColor("#D33E43"));
+            }
+
+
         }
 
         private void setBlogImage(String downloadUri){

@@ -12,7 +12,7 @@
         android:id="@+id/bottom_action_my_posts"
         android:icon="@drawable/outline_person_white_36"
         android:iconTint="@color/White"
-        android:title="@string/bottom_notification_texr"
+        android:title="@string/bottom_myposts_text"
         app:showAsAction="always" />
     <item
         android:id="@+id/bottom_action_account"

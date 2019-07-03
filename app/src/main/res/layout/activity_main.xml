@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
-            app:menu="@menu/bottom_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
+            app:menu="@menu/bottom_menu"
+            android:background="@color/colorPrimary"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
         <FrameLayout
             android:id="@+id/main_cointer"

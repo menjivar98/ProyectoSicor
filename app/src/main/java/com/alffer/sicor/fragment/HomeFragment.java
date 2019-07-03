@@ -37,16 +37,12 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  */
 public class HomeFragment extends Fragment {
 
-    RecyclerView post_list_view;
+    private RecyclerView post_list_view;
     private List<DangerPost> danger_list;
-    PostAdapter postAdapter;
+    private PostAdapter postAdapter;
 
-    //Firebase
-    private FirebaseFirestore firebaseFirestore;
-    private FirebaseAuth firebaseAuth;
     private DocumentSnapshot lastVisible;
     private Boolean isFirstpageFirstLoad = true;
-    private FloatingActionButton addPost;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,7 +55,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        addPost = getActivity().findViewById(R.id.add_post_btn);
+        FloatingActionButton addPost = getActivity().findViewById(R.id.add_post_btn);
         addPost.show();
 
         danger_list = new ArrayList<>();
@@ -70,10 +66,11 @@ public class HomeFragment extends Fragment {
         post_list_view.setAdapter(postAdapter);
         post_list_view.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-       firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
        if (firebaseAuth.getCurrentUser() != null){
-           firebaseFirestore = FirebaseFirestore.getInstance();
+           //Firebase
+           FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
           /* post_list_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
                @Override

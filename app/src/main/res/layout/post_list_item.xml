@@ -2,14 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
@@ -30,95 +34,103 @@
                 android:id="@+id/post_user_image"
                 android:layout_width="54dp"
                 android:layout_height="54dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="67dp"
                 app:layout_constraintBottom_toTopOf="@+id/post_image"
+                app:layout_constraintEnd_toStartOf="@+id/post_username"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
                 tools:src="@drawable/user_photo_item" />
 
             <TextView
                 android:id="@+id/post_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginEnd="33dp"
-                android:layout_marginRight="33dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/username"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/tv_description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/post_user_image" />
+                app:layout_constraintBottom_toTopOf="@+id/post_title"
+                app:layout_constraintEnd_toStartOf="@+id/post_date"
+                app:layout_constraintStart_toEndOf="@+id/post_user_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/post_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="6dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="1dp"
                 android:text="@string/post_date"
                 app:layout_constraintBottom_toTopOf="@+id/post_title"
-                app:layout_constraintStart_toEndOf="@+id/post_user_image"
+                app:layout_constraintEnd_toStartOf="@+id/post_danger"
+                app:layout_constraintStart_toEndOf="@+id/post_username"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.062" />
+                app:layout_constraintVertical_bias="0.285" />
 
             <ImageView
                 android:id="@+id/post_image"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="90dp"
+                android:layout_width="394dp"
+                android:layout_height="222dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/post_user_image"
                 app:srcCompat="@drawable/placeholderimage" />
 
             <TextView
                 android:id="@+id/post_title"
-                android:layout_width="317dp"
+                android:layout_width="274dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginBottom="96dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/lorem"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/post_image"
-                app:layout_constraintStart_toEndOf="@+id/post_user_image" />
+                app:layout_constraintBottom_toTopOf="@+id/tv_description"
+                app:layout_constraintStart_toEndOf="@+id/post_user_image"
+                app:layout_constraintTop_toBottomOf="@+id/post_username" />
 
             <TextView
                 android:id="@+id/post_danger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="6dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="1dp"
                 android:text="@string/high"
                 app:layout_constraintBottom_toTopOf="@+id/post_title"
                 app:layout_constraintStart_toEndOf="@+id/post_date"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.062" />
+                app:layout_constraintVertical_bias="0.285" />
 
             <TextView
                 android:id="@+id/tv_description"
-                android:layout_width="273dp"
-                android:layout_height="87dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="280dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="9dp"
                 android:text="@string/lorem"
                 app:layout_constraintBottom_toTopOf="@+id/post_image"
                 app:layout_constraintStart_toEndOf="@+id/post_user_image"
-                app:layout_constraintTop_toBottomOf="@+id/post_title"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/post_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

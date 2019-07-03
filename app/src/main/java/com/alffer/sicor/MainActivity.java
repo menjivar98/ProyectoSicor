@@ -30,13 +30,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar mainToolbar;
     private  FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
-
-    private String current_user_id;
-
-    private FloatingActionButton addPostBtn;
 
     BottomNavigationView mainbottomNav;
 
@@ -50,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainToolbar = findViewById(R.id.main_toolbar);
+        Toolbar mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -88,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-            addPostBtn =  findViewById(R.id.add_post_btn);
+            FloatingActionButton addPostBtn = findViewById(R.id.add_post_btn);
             addPostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -113,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
             sendtoLogin();
         }else {
-            current_user_id = mAuth.getCurrentUser().getUid();
+            String current_user_id = mAuth.getCurrentUser().getUid();
             firestore.collection("Users").document(current_user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
