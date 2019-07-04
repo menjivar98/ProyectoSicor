@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
+            app:titleTextColor="@color/light_yellow"
             android:background="@color/colorPrimary" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,7 +30,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="13dp"
             android:src="@mipmap/create_post"
-            app:backgroundTint="#FBD680" />
+            app:backgroundTint="@color/light_yellow" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/mainBottomNav"
