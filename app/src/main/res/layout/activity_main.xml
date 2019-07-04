@@ -31,7 +31,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="13dp"
             android:src="@mipmap/create_post"
-            app:backgroundTint="@color/Secondary" />
+            app:backgroundTint="#FBD680" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/mainBottomNav"
