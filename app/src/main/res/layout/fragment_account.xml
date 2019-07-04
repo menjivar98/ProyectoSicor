@@ -3,24 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".fragment.AccountFragment">
+    tools:context=".fragment.AccountFragment"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="244dp"
+        android:layout_height="221dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/splash1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAccountSett"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/action_setting"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
-        android:textSize="25sp"/>
+        android:gravity="center"
+        android:text="@string/action_setting"
+        android:textColor="@color/light_yellow"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btnLogut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:text="@string/action_logout"
-        android:textSize="25sp"/>
+        android:textColor="@color/light_yellow"
+        android:textSize="25sp" />
 
 </LinearLayout>
