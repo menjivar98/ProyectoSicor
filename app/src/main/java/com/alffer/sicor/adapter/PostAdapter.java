@@ -104,7 +104,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView dateView;
         TextView postUserName;
         CircleImageView postUserImage;
-        TextView dangerView;
         ConstraintLayout cLayout;
 
         private ViewHolder(@NonNull View itemView) {
@@ -123,9 +122,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
 
         private void setPostDanger(String danger) {
-            dangerView = mView.findViewById(R.id.post_danger);
             cLayout = mView.findViewById(R.id.inBoxed);
-            dangerView.setText(danger);
             if(danger.equals("Low")) {
                 cLayout.setBackgroundColor(Color.parseColor("#ACC18A"));
             }

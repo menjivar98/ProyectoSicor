@@ -3,7 +3,10 @@ package com.alffer.sicor.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.collection.LLRBNode;
 
 /*
 
@@ -35,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
     private Button loginRegBtn;
     private ProgressBar loginProgress;
-
+    //ActionBar bar = getActionBar();
 
     //Esta linea de codigo donde declaramos que queremos utilizar firebase
     private FirebaseAuth mAuth;
@@ -54,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.btn_login);
         loginRegBtn = findViewById(R.id.btn_reg);
         loginProgress = findViewById(R.id.login_progress);
+        //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#344955")));
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,9 +27,9 @@
     <string name="are_you_new_here_create_an_account">Are you new here? Create an account!</string>
     <string name="enter_a_description">Enter a description</string>
     <string name="post_date">Post date</string>
-    <string name="high">High</string>
     <string name="username">Username</string>
     <string name="lorem">Lorem ipsum dolor sit amet regione urbanitas vis qui elit populo ut</string>
     <string name="enter_a_name">Name</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="Settings_bro">Settings</string>
 </resources>
