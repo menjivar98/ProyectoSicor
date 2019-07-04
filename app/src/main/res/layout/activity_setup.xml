@@ -22,48 +22,43 @@
         android:layout_height="88dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/default_profile"
-        app:layout_constraintBottom_toTopOf="@+id/button_setup"
         app:layout_constraintEnd_toStartOf="@+id/setup_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setupToolbar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/setupToolbar" />
 
     <EditText
         android:id="@+id/setup_text"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="408dp"
         android:hint="@string/enter_a_name"
         android:inputType="textPersonName"
         android:padding="12dp"
         app:layout_constraintBottom_toTopOf="@+id/button_setup"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/setup_image"
-        app:layout_constraintTop_toBottomOf="@+id/setupToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/setupToolbar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button_setup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="408dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/Secondary"
         android:backgroundTint="@color/Secondary"
         android:padding="15dp"
         android:text="@string/text_of_btn_setup"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setup_text" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
