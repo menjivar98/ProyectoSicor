@@ -59,7 +59,7 @@ public class SetupActivity extends AppCompatActivity {
 
         setupToolbar = findViewById(R.id.setupToolbar);
         setSupportActionBar(setupToolbar);
-        getSupportActionBar().setTitle("Account Setup");
+        getSupportActionBar().setTitle(getString(R.string.Settings_bro));
 
 
         setupImage = findViewById(R.id.setup_image);

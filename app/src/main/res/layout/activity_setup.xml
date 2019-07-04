@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SetupActivity">
+    tools:context=".activities.SetupActivity"
+    android:background="@color/colorPrimary">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/setupToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        app:titleTextColor="@color/light_yellow"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp"></androidx.appcompat.widget.Toolbar>
@@ -18,47 +20,46 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/setup_image"
-        android:layout_width="89dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/default_profile"
-        app:layout_constraintEnd_toStartOf="@+id/setup_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setupToolbar" />
 
     <EditText
         android:id="@+id/setup_text"
-        android:layout_width="265dp"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="408dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
         android:hint="@string/enter_a_name"
         android:inputType="textPersonName"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_setup"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/setup_image"
-        app:layout_constraintTop_toBottomOf="@+id/setupToolbar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/setupToolbar" />
 
     <Button
         android:id="@+id/button_setup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="28dp"
         android:background="@color/Secondary"
         android:backgroundTint="@color/Secondary"
         android:padding="15dp"
         android:text="@string/text_of_btn_setup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setup_text"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
