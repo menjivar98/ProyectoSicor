@@ -64,7 +64,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.setDescText(desc_data);
 
         String danger_post = danger_list.get(position).getDanger();
-        //holder.coloring(danger_post);
         holder.setPostDanger(danger_post);
 
         String image_url = danger_list.get(position).getImage_url();
@@ -107,23 +106,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         CircleImageView postUserImage;
         TextView dangerView;
         ConstraintLayout cLayout;
-
-       /* private void coloring(String danger) {
-            cLayout = mView.findViewById(R.id.inBoxed);
-            switch (danger) {
-                case "Low":
-                    cLayout.setBackgroundColor(Color.parseColor("#adffa3"));
-                    break;
-                case "Medium":
-                    cLayout.setBackgroundColor(Color.parseColor("#fdb14b"));
-                    break;
-                case "High":
-                    cLayout.setBackgroundColor(Color.parseColor("b74d3e"));
-                    break;
-                default:
-                    break;
-            }
-        }*/
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);

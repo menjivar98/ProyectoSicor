@@ -64,12 +64,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/TextView_post"
+        app:layout_constraintEnd_toStartOf="@+id/chip_low"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/image_post" />
 
     <com.google.android.material.chip.Chip
@@ -80,8 +82,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:textAlignment="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/chip_low"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/chip_medium"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/image_post" />
 
@@ -93,8 +98,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:textAlignment="center"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/chip_Medium"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/chip_high"
         app:layout_constraintStart_toEndOf="@+id/chip_low"
         app:layout_constraintTop_toBottomOf="@+id/image_post" />
 

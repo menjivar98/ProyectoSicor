@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sicor</string>
+    <string name="app_name">SICOR</string>
     <string name="Login_Email">E-mail</string>
     <string name="password_login">Password</string>
     <string name="btn_login">Log in</string>
@@ -30,4 +30,6 @@
     <string name="high">High</string>
     <string name="username">Username</string>
     <string name="lorem">Lorem ipsum dolor sit amet regione urbanitas vis qui elit populo ut</string>
+    <string name="enter_a_name">Name</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
