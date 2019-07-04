@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                     reg_btn.setVisibility(View.VISIBLE);
 
                 }
-                else if (!Pattern.matches("^((([a-zA-z]+)|([0-9]{5}[1-9][0-1][1-9]))@uca.edu.sv)$",email)){
+                else if (!Pattern.matches("^((([a-zA-z]+)|([0-9]{6}[0-1][1-9]))@uca.edu.sv)$",email)){
                     showMessage("Correo no válido");
                     progressBar.setVisibility(View.INVISIBLE);
                     reg_btn.setVisibility(View.VISIBLE);
