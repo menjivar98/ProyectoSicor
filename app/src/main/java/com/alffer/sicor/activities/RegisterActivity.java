@@ -19,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.*;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText remail, rpassword,rconfirmpass;
@@ -54,9 +56,16 @@ public class RegisterActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     reg_btn.setVisibility(View.VISIBLE);
 
-                }else if (!pass.equals(confirm_pass)){
+                }
+                else if (!Pattern.matches("^((([a-zA-z]+)|([0-9]{6}[0-1][1-9]))@uca.edu.sv)$",email)){
+                    showMessage("Correo no válido");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    reg_btn.setVisibility(View.VISIBLE);
+                }
+                else if (!pass.equals(confirm_pass)){
                     showMessage("Your password is not equals");
-                }else{
+                }
+                else {
                     createUser(email,pass);
                 }
 
